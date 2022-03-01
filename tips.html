@@ -17,8 +17,17 @@
     <input type="button" onclick="tips()" value="Find tips">
 </form>
 
-
+<form>
+    <label for="multiply">*</label>
+    <input type="radio" id="mult" name="multiply"  value="multiply">
+    <label for="divide">/</label>
+    <input type="radio" id="div" name="divide" value="divide">
+    <label for="exponent">**</label>
+    <input type="radio" id="exp" name="exponent" value="exponent">
+    <input type="button" onclick="chooseOp()" value="Choose operation">
+</form>
 <p id="result">bruh</p>
+<p id="result2">none</p>
 
 <script> 
 
@@ -53,6 +62,26 @@ function tips(){
     }
     
     result = document.getElementById("result")
+    result.innerHTML = results
+}
+
+function chooseOp(){
+    console.log("getting values")
+    result = document.getElementById("result2")
+    checks = document.getElementById("checkamt").value
+    tipincs = document.getElementById("tipinc").value
+    mult = document.getElementById("mult").checked
+    div = document.getElementById("div").checked
+    exp = document.getElementById("exp").checked
+    let val = 0
+    let results = ""
+    if (mult){
+        results = r(checks * tipincs).toString()
+    }else if (div){
+        results = r(checks / tipincs).toString()
+    }else if (exp){
+        results = r(checks ** tipincs).toString()
+    }
     result.innerHTML = results
 }
 </script>
