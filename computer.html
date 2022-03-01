@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+ <head>
+     <title>Computer Ordering</title>
+ </head>
+<body>
+
+<h2>Logan orders a computer</h2>
+<form>
+    <input type="checkbox" id="mem" name="memory"   
+      value="extra memory" checked>
+    <label for="memory">Extra Memory</label></br>
+  
+    <input type="checkbox" id="mouse" name="mouse" 
+       value="mouse">
+    <label for="mouse">Mouse</label></br>
+  
+    <input type="checkbox" id="cell" name="cell"   
+       value="cell" checked>
+    <label for="cell">Cell Service</label></br>
+
+    <input type="button" onclick="orderComputer()" value="Order a computer">
+  </form>
+
+<p id="result">This text will be replaced </p>
+
+<script> 
+
+function resolveForm (){
+    console.log("Getting form values")
+    age = document.getElementById("form1_age").value
+    nick = document.getElementById("form1_nick").value
+    confirmed = confirm("Are these the values? "+age+" and "+nick)
+    
+    out = document.getElementById("result")
+    if(confirmed){
+        out.innerHTML = "Values were confirmed"
+    } else {
+        out.innerHTML = "Values were not confirmed"
+    }
+}
+function orderComputer(){
+    result = document.getElementById("result")
+    mem = document.getElementById("mem").checked
+    mouse = document.getElementById("mouse").checked
+    cell = document.getElementById("cell").checked
+    result.innerHTML = "damn"
+    var my_computer = new Object(mem,mouse,cell)
+    result.innerHTML = my_computer.toString()
+}
+</script>
+
+</body>
+</html> 
