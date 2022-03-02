@@ -23,7 +23,13 @@
   </form>
 
 <p id="result">This text will be replaced </p>
-
+<form>
+    <label for="property">Enter a property name</label>
+    <input type="text" id="property" name="property" value="engraved">
+    <label for="value">Enter a value</label>
+    <input type="text" id="value" name="value" value="value">
+    <input type="button" onclick="updateComputer()" value ="Update the computer">
+</form>
 <script> 
 
 function resolveForm (){
@@ -39,14 +45,26 @@ function resolveForm (){
         out.innerHTML = "Values were not confirmed"
     }
 }
+Computer.prototype=function(mem,mouse,cell){
+    this.mem = mem
+    this.mouse = mouse
+    this.cell = cell
+}
 function orderComputer(){
     result = document.getElementById("result")
     mem = document.getElementById("mem").checked
     mouse = document.getElementById("mouse").checked
     cell = document.getElementById("cell").checked
-    result.innerHTML = "damn"
-    var my_computer = new Object(mem,mouse,cell)
+    result.innerHTML = mem+" "+mouse+" "+cell
+    var my_computer = new Computer(mem,mouse,cell)
     result.innerHTML = my_computer.toString()
+}
+function updateComputer(){
+    result = document.getElementById("result")
+    property = document.getElementById("property").value
+    value = document.getElementById("value").value
+    result.innerHTML +=" "+ value
+    my_computer[0]=(property,value)
 }
 </script>
 
